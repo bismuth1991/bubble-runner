@@ -27,5 +27,5 @@ function* createNewGame() {
 }
 
 function* watchNewGameRequest() {
-  yield takeLatest(NEW_GAME_REQUEST, loadAssests);
+  yield takeLatest(NEW_GAME_REQUEST, createNewGame);
 }

@@ -1,5 +1,6 @@
 import { randomColor, randomIntFromRange } from './utils';
-import canvas from '../App';
+
+const canvas = document.querySelector('canvas');
 
 export const PLAYER_RADIUS = 30;
 const SPEED = 5;

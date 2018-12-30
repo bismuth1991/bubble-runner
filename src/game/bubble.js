@@ -1,6 +1,7 @@
 import { randomIntFromRange, distance, randomColor } from './utils';
 import { PLAYER_RADIUS } from './player';
-import canvas from '../App';
+
+const canvas = document.querySelector('canvas');
 
 const randomVelocity = () => (Math.random() - 0.5) * 10;
 const randomRadius = () => Math.random() * 100 + 20;
