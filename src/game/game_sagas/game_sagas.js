@@ -6,6 +6,7 @@ import { RECEIVE_PLAYER } from '../game_actions/player_actions';
 import { getBubblesFromState } from '../selectors';
 import makeBubble from '../bubble';
 import { createPlayer } from '../player';
+import animate from '../canvas';
 
 
 function* loadAssests(numBubbles) {
@@ -21,7 +22,7 @@ function* loadAssests(numBubbles) {
 }
 
 function* startGame() {
-
+  yield call(animate);
 }
 
 function* createNewGame() {

@@ -54,3 +54,15 @@ const updateBubble = (bubble, rest) => {
     y: y + dY,
   }));
 };
+
+const animate = (bubbles) => {
+  requestAnimationFrame(animate);
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  for (let i = 0; i < bubbles.length; i += 1) {
+    const rest = [...bubbles.slice(0, i), ...bubbles.slice(i + 1)];
+    updateBubble(bubbles[i], rest);
+  }
+};
+
+export default animate;
