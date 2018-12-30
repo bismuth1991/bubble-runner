@@ -3,6 +3,7 @@ import {
 } from 'redux-saga/effects';
 import { RECEIVE_BUBBLE } from '../game_actions/bubble_actions';
 import { RECEIVE_PLAYER } from '../game_actions/player_actions';
+import { NEW_GAME_REQUEST } from '../game_actions/game_actions';
 import { getBubblesFromState } from '../selectors';
 import makeBubble from '../bubble';
 import { createPlayer } from '../player';
@@ -30,8 +31,6 @@ function* createNewGame() {
   yield call(startGame);
 }
 
-function* watchNewGameRequest() {
+export default function* watchNewGameRequest() {
   yield takeLatest(NEW_GAME_REQUEST, createNewGame);
 }
-
-export default watchNewGameRequest;
