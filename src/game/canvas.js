@@ -1,5 +1,7 @@
 import { isCollided } from './game_utils/utils';
-import { RECEIVE_BUBBLE, receiveBubble } from './game_actions/bubble_actions';
+import resolveCollision from './game_utils/resolve_collision_util';
+import { receiveBubble, receiveBubbles } from './game_actions/bubble_actions';
+
 
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
@@ -20,7 +22,7 @@ const updateBubble = (bubble, rest) => {
   drawBubble(bubble);
 
   const {
-    x, y, dX, dY, radius, mass,
+    x, y, dX, dY, radius,
   } = bubble;
 
   for (let i = 0; i < rest.length - 1; i += 1) {
@@ -28,7 +30,8 @@ const updateBubble = (bubble, rest) => {
       x, y, radius,
       rest[i].x, rest[i].y, rest[i].radius,
     )) {
-      console.log('need to resolve collision');
+      const alteredVelocityBubbles = resolveCollision(bubble, rest[i]);
+      dispatch(receiveBubbles(alteredVelocityBubbles));
     }
   }
 

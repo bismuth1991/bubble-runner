@@ -9,7 +9,11 @@ const App = () => (
     </header>
 
     <main>
-      <canvas style={{ border: '1px solid black' }} />
+      <canvas
+        height="900px"
+        width="900px"
+        style={{ border: '1px solid black' }}
+      />
     </main>
   </div>
 );
