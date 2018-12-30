@@ -1,7 +1,7 @@
 import { randomIntFromRange, distance, randomColor } from './utils';
 import canvas from '../App';
-import store from '../App';
 
+const randomRadius = Math.random() * 100 + 20;
 const COLORS = [
   '#393E46',
   '#00ADB5',
@@ -10,10 +10,9 @@ const COLORS = [
   '#FC3C3C',
 ];
 
-const ramdomRadius = Math.random() * 100 + 20;
 
 const makeBubble = ({ game: { bubbles } }) => {
-  const radius = ramdomRadius;
+  const radius = randomRadius;
   let x = randomIntFromRange(radius, canvas.width - radius);
   let y = randomIntFromRange(radius, canvas.height - radius);
   const color = randomColor(COLORS);
