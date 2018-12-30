@@ -15,18 +15,27 @@ const drawBubble = (bubble) => {
   ctx.closePath();
 };
 
-const updateBubbles = (allBubbles) => {
-  for (let i = 0; i < allBubbles.length - 1; i += 1) {
-    for (let j = i + 1; j < allBubbles.length; j += 1) {
-      const bubbleI = allBubbles[i];
-      const bubbleJ = allBubbles[j];
+// const updateBubble = (bubble, rest) => {
+//   for (let i = 0; i < rest.length - 1; i += 1) {
+//     drawBubble(bubble);
 
-      if (isCollided(
-        bubbleI.x, bubbleI.y, bubbleI.radius,
-        bubbleJ.x, bubbleJ.y, bubbleJ.radius,
-      )) {
-        console.log('need to resolve collision');
-      }
-    }
-  }
-};
+//     const {
+//       x, y, dX, dY, radius, mass,
+//     } = bubble;
+
+//     if (isCollided(
+//       x, y, radius,
+//       rest[i].x, rest[i].y, rest[i].radius,
+//     )) {
+//       console.log('need to resolve collision');
+//     }
+
+//     dispatchEvent({
+//       type: UPDATE_BUBBLE_POS,
+//       data: {
+//         x: x + dX,
+//         y: y + dY,
+//       },
+//     });
+//   }
+// };

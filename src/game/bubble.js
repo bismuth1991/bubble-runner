@@ -15,6 +15,7 @@ const COLORS = [
 ];
 
 const makeBubble = (currentBubbles) => {
+  const id = Date.now();
   const radius = randomRadius();
   let x = randomIntFromRange(PLAYER_RADIUS + 100, canvas.width - radius);
   let y = randomIntFromRange(radius, canvas.height - radius);
@@ -38,7 +39,9 @@ const makeBubble = (currentBubbles) => {
   }
 
   return {
-    x, y, dX, dY, radius, mass, color,
+    [id]: {
+      x, y, dX, dY, radius, mass, color,
+    },
   };
 };
 

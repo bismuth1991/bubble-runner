@@ -1,6 +1,3 @@
-export const getBubblesFromState = ({ game }) => ([
-  game.player,
-  ...game.bubble,
-]);
+export const getBubblesFromState = ({ game: { bubbles } }) => Object.values(bubbles);
 
 export const dummy = () => 'dummy';
