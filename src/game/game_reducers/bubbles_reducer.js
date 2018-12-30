@@ -1,8 +1,8 @@
-import { RECEIVE_CIRCLE } from '../game_actions/bubble_actions';
+import { RECEIVE_BUBBLE } from '../game_actions/bubble_actions';
 
 const bubblesReducer = (state = [], action) => {
   switch (action.type) {
-    case RECEIVE_CIRCLE:
+    case RECEIVE_BUBBLE:
       return [
         ...state,
         action.data,
