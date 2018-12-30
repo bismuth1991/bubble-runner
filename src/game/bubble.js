@@ -1,4 +1,4 @@
-import { randomIntFromRange, randomColor, isCollided } from './utils';
+import { randomIntFromRange, randomColor, isCollided } from './game_utils/utils';
 import { PLAYER_RADIUS } from './player';
 
 const canvas = document.querySelector('canvas');
@@ -40,7 +40,7 @@ const makeBubble = (currentBubbles) => {
 
   return {
     [id]: {
-      x, y, dX, dY, radius, mass, color,
+      id, x, y, dX, dY, radius, mass, color,
     },
   };
 };

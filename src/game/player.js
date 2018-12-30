@@ -1,4 +1,4 @@
-import { randomColor, randomIntFromRange } from './utils';
+import { randomColor, randomIntFromRange } from './game_utils/utils';
 
 const canvas = document.querySelector('canvas');
 
@@ -14,6 +14,7 @@ const COLORS = [
 ];
 
 export const createPlayer = () => ({
+  id: Date.now(),
   x: PLAYER_RADIUS,
   y: randomIntFromRange(PLAYER_RADIUS, canvas.height - PLAYER_RADIUS),
   dX: 0,
