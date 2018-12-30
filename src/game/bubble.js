@@ -1,4 +1,5 @@
 import { randomIntFromRange, distance, randomColor } from './utils';
+import { PLAYER_RADIUS } from './player';
 import canvas from '../App';
 
 const randomRadius = Math.random() * 100 + 20;
@@ -10,10 +11,9 @@ const COLORS = [
   '#FC3C3C',
 ];
 
-
 const makeBubble = ({ game: { bubbles } }) => {
   const radius = randomRadius;
-  let x = randomIntFromRange(radius, canvas.width - radius);
+  let x = randomIntFromRange(PLAYER_RADIUS + 100, canvas.width - radius);
   let y = randomIntFromRange(radius, canvas.height - radius);
   const color = randomColor(COLORS);
 
@@ -32,3 +32,5 @@ const makeBubble = ({ game: { bubbles } }) => {
     x, y, radius, color,
   };
 };
+
+export default makeBubble;
