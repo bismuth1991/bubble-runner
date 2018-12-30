@@ -12,28 +12,24 @@ const COLORS = [
 
 const ramdomRadius = Math.random() * 100 + 20;
 
-const makeBubbles = (num) => {
-  for (let i = 0; i < num; i += 1) {
-    const radius = ramdomRadius;
-    let x = randomIntFromRange(radius, canvas.width - radius);
-    let y = randomIntFromRange(radius, canvas.height - radius);
-    const color = randomColor(COLORS);
+const makeBubble = ({ game: { bubbles } }) => {
+  const radius = ramdomRadius;
+  let x = randomIntFromRange(radius, canvas.width - radius);
+  let y = randomIntFromRange(radius, canvas.height - radius);
+  const color = randomColor(COLORS);
 
-    if (i !== 0) {
-      const { game: { bubbles } } = store.getState();
+  if (bubbles.length !== 0) {
+    for (let i = 0; i < bubbles.length; i += 1) {
+      if (distance(x, y, bubbles[i].x, bubbles[i].y - radius * 2 < 0)) {
+        x = randomIntFromRange(radius, canvas.width - radius);
+        y = randomIntFromRange(radius, canvas.height - radius);
 
-      for (let j = 0; j < bubbles.length; j += 1) {
-        if (distance(x, y, bubbles[j].x, bubbles[j].y - radius * 2 < 0)) {
-          x = randomIntFromRange(radius, canvas.width - radius);
-          y = randomIntFromRange(radius, canvas.height - radius);
-
-          j = -1;
-        }
+        i = -1;
       }
     }
-
-    store.dispatch(RECEIVE_BUBBLE, {
-      x, y, radius, color,
-    });
   }
+
+  return {
+    x, y, radius, color,
+  };
 };
