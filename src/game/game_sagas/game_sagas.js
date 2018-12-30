@@ -33,3 +33,5 @@ function* createNewGame() {
 function* watchNewGameRequest() {
   yield takeLatest(NEW_GAME_REQUEST, createNewGame);
 }
+
+export default watchNewGameRequest;
