@@ -3,6 +3,7 @@ import canvas from '../App';
 
 export const PLAYER_RADIUS = 30;
 const SPEED = 5;
+const MASS = 100;
 const COLORS = [
   '#393E46',
   '#00ADB5',
@@ -17,6 +18,7 @@ export const createPlayer = () => ({
   dX: 0,
   dY: 0,
   speed: SPEED,
+  mass: MASS,
   radius: PLAYER_RADIUS,
   color: randomColor(COLORS),
 });

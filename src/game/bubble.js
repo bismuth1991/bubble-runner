@@ -2,7 +2,9 @@ import { randomIntFromRange, distance, randomColor } from './utils';
 import { PLAYER_RADIUS } from './player';
 import canvas from '../App';
 
-const randomRadius = Math.random() * 100 + 20;
+const randomVelocity = () => (Math.random() - 0.5) * 10;
+const randomRadius = () => Math.random() * 100 + 20;
+const MASS = 1;
 const COLORS = [
   '#393E46',
   '#00ADB5',
@@ -12,9 +14,12 @@ const COLORS = [
 ];
 
 const makeBubble = ({ game: { bubbles } }) => {
-  const radius = randomRadius;
+  const radius = randomRadius();
   let x = randomIntFromRange(PLAYER_RADIUS + 100, canvas.width - radius);
   let y = randomIntFromRange(radius, canvas.height - radius);
+  const dX = randomVelocity();
+  const dY = randomVelocity();
+  const mass = MASS;
   const color = randomColor(COLORS);
 
   if (bubbles.length !== 0) {
@@ -29,7 +34,7 @@ const makeBubble = ({ game: { bubbles } }) => {
   }
 
   return {
-    x, y, radius, color,
+    x, y, dX, dY, radius, mass, color,
   };
 };
 
