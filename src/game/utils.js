@@ -8,3 +8,7 @@ export const distance = (x1, y1, x2, y2) => {
 
   return Math.sqrt((xDist ** 2) + (yDist ** 2));
 };
+
+export const isCollided = (x1, y1, radius1, x2, y2, radius2) => (
+  distance(x1, y1, x2, y2) - radius1 - radius2 <= 0
+);

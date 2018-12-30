@@ -1,4 +1,4 @@
-import { randomIntFromRange, distance, randomColor } from './utils';
+import { randomIntFromRange, randomColor, isCollided } from './utils';
 import { PLAYER_RADIUS } from './player';
 
 const canvas = document.querySelector('canvas');
@@ -14,7 +14,7 @@ const COLORS = [
   '#FC3C3C',
 ];
 
-const makeBubble = ({ game: { bubbles } }) => {
+const makeBubble = (currentBubbles) => {
   const radius = randomRadius();
   let x = randomIntFromRange(PLAYER_RADIUS + 100, canvas.width - radius);
   let y = randomIntFromRange(radius, canvas.height - radius);
@@ -23,9 +23,12 @@ const makeBubble = ({ game: { bubbles } }) => {
   const mass = MASS;
   const color = randomColor(COLORS);
 
-  if (bubbles.length !== 0) {
-    for (let i = 0; i < bubbles.length; i += 1) {
-      if (distance(x, y, bubbles[i].x, bubbles[i].y - radius * 2 < 0)) {
+  if (currentBubbles.length !== 0) {
+    for (let i = 0; i < currentBubbles.length; i += 1) {
+      if (isCollided(
+        x, y, radius,
+        currentBubbles[i].x, currentBubbles[i].y, currentBubbles[i].radius,
+      )) {
         x = randomIntFromRange(radius, canvas.width - radius);
         y = randomIntFromRange(radius, canvas.height - radius);
 

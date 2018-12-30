@@ -3,13 +3,16 @@ import {
 } from 'redux-saga/effects';
 import { RECEIVE_BUBBLE } from '../game_actions/bubble_actions';
 import { RECEIVE_PLAYER } from '../game_actions/player_actions';
+import { getBubblesFromState } from '../selectors';
 import makeBubble from '../bubble';
 import { createPlayer } from '../player';
 
 
 function* loadAssests(numBubbles) {
   for (let i = 0; i < numBubbles; i += 1) {
-    const bubble = yield select(makeBubble);
+    const currentBubbles = yield select(getBubblesFromState);
+
+    const bubble = yield call(makeBubble(currentBubbles));
     yield put({ type: RECEIVE_BUBBLE, bubble });
   }
 
